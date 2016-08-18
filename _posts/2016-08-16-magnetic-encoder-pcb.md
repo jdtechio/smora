@@ -63,10 +63,6 @@ The prototype for the magnetic encoder board is alive and kicking!
 [![MainGear]({{ base_path }}/images/MG996R_gears_tn.jpg)]({{ base_path }}/images/MG996R_gears.jpg)
 {% endcapture %}
 
-**UPDATE POST DATE**
-
-**REMOVE THIS COMMENTS**
-
 # Why
 
 The **[SMORA]({{ site.github_code }})** project aims to create a smart servo motor that will offload most of the processing power and communication to the servo itself. Multiple sensors will allow for real-time feedback about the shaft position and velocity as well as the servo attitude (yaw, pitch and roll). The data available might prove interesting by, for example, giving information about individual limb orientation in a robotic arm.
