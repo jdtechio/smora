@@ -82,7 +82,7 @@ It all started with reverse engineering the TowerPro MG996R inner dimensions wit
 
 <figure>
   {{ model_rendering | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Model rendering depicting MG996R simplified body, magnet and holding enclosure in black. Shaft is hidden under magnet.</figcaption>
+  <figcaption>Model rendering depicting MG996R simplified body in grey, magnet in silver and holding enclosure in black. Shaft is hidden under magnet.</figcaption>
 </figure>
 
 The shaft is directly bonded to the magnet using a cyanoacrylate glue. The alignment guide was build specifically to reduce the chance of glueing the 2 parts out of axis. Any "wobble" while the shaft is rotating would translate into a lower precision reading from the AS5048B rotary position sensor. The holding enclosure also assures that the magnet keeps centered right over the sensor's sweet spot.
