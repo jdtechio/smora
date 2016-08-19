@@ -122,7 +122,7 @@ Because the whole board runs at 3.3V, there was a need to have a development boa
 
 Example [sketches]({{ site.github_code }}/tree/master/sketches/) from libraries available online were uploaded to the development board to test the individual components. At first glance, all of them passed.
 
-Below are a couple of shots from the I2C communication with the AS5048B sensor. A *START* condition can be seen in the beginning as well as a possible crosstalk artifact in the SCL line. The I2C protocol should be rugged enough to handle it thought. This artifact's origin might come from the fact that SDA and SCL run in parallel right next to each other. If later on it ends up being a problem then the spacing between them in the FPC flat cable should be increased.
+Below are a couple of shots from the I2C communication with the AS5048B sensor. A *START* condition can be seen in the beginning as well as a possible crosstalk artifact in the SCL line. The I2C protocol should be rugged enough to handle it thought. This artifact's origin might come from the fact that SDA and SCL run in parallel right next to each other. If later on it ends up being a problem then the spacing between them in the FPC flat cable should be increased by, for example, placing the GND line between them.
 
 {% include gallery id="gallery3" class="full" caption="I2C communication with AS5048B sensor. Channel 1 is <span style=\"color: Gold\">SDA</span> and Channel 2 is <span style=\"color: DodgerBlue\">SCL</span>" %}
 
