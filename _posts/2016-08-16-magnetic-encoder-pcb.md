@@ -78,14 +78,14 @@ Using a magnetic position encoder and removing the limit pin on the main shaft g
 
 # Model
 
-It all started with reverse engineering the TowerPro MG996R inner dimensions with a caliper. A simplified model was build using Autodesk Fusion 360. This step was necessary to get a good understanding of the available space inside the servo enclosure so that all the PCB's would fit properly. Along with the body, the holding enclosure for the diametrically magnetized neodymium magnet, shaft and an alignment guide were also designed.
+It all started with reverse engineering the TowerPro MG996R inner dimensions with a caliper. A simplified model was built using Autodesk Fusion 360. This step was necessary to get a good understanding of the available space inside the servo enclosure so that all the PCB's would fit properly. Along with the body, the holding enclosure for the diametrically magnetized neodymium magnet, shaft and an alignment guide were also designed.
 
 <figure>
   {{ model_rendering | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Model rendering depicting MG996R simplified body in grey, magnet in silver and holding enclosure in black. Shaft is hidden under magnet.</figcaption>
+  <figcaption>Model rendering depicting MG996R simplified body in grey, magnet in silver and holding enclosure in black. Shaft is hidden underneath the magnet.</figcaption>
 </figure>
 
-The shaft is directly bonded to the magnet using a cyanoacrylate glue. The alignment guide was build specifically to reduce the chance of glueing the 2 parts out of axis. Any "wobble" while the shaft is rotating would translate into a lower precision reading from the AS5048B rotary position sensor. The holding enclosure also assures that the magnet keeps centered right over the sensor's sweet spot.
+The shaft is directly bonded to the magnet using a cyanoacrylate glue. The alignment guide was built specifically to reduce the chance of glueing the 2 parts out of axis. Any "wobble" while the shaft is rotating would translate into a lower precision reading from the AS5048B rotary position sensor. The holding enclosure also assures that the magnet keeps centered right over the sensor's sweet spot.
 
 According to the datasheet, any displacement radius under 0.25mm while using smaller diameter magnets is acceptable. So, mechanically, this models should be precise enough. Unfortunately, the minimum distance between the IC package surface and the magnet wasn't taken into account. Further testing is needed to see if this causes any non-linearities with the position output. If so, a new holding enclosure needs to be modeled considering the recommended distance ranging from 0.5mm to 2.5mm.
 
@@ -95,7 +95,7 @@ The [PCB]({{ site.github_code }}/tree/master/circuits/encoder_pcb/) shape was al
 
 At this point, the AS5048B rotary position sensor, MPU-6050 accelerometer and gyro, DS18B20 1-wire temperature sensor, FPC connector and passive components were placed in the schematic and routed.
 
-After exporting the GCode using PCBGcode and hand tweaking the resulting files, the board was milled on a modified Proxxon MF70 with CNC control running GRBL, test fitted and the components were soldered and tested. Special care was taken to avoid vias under the IC's. *Note to self: learn the skills necessary to create through-hole vias.*
+After exporting the GCode using PCBGcode and hand tweaking the resulting files, the board was milled on a modified Proxxon MF70 with CNC control running GRBL, test fitted and the components were soldered and tested. Special care was taken to avoid vias under the IC's. *Note to self: learn the skills necessary to create plated through-hole vias.*
 
 The I2C addresses of the AS5048B and MPU-6050 were hardcoded to 0x40 and 0x68. All the components on this board operate at 3.3V. Pull-up resistors for the SDA and SCL lines were omitted in this revision but added later on to the Eagle files.
 
@@ -111,7 +111,7 @@ The FPC connector includes an interrupt pin for the MPU-6050, SCL, SDA, VCC, 1-W
 
 An [FPC cable breakout]({{ site.github_code }}/tree/master/circuits/encoder_cable_breakout/) was designed to make this breadboard-compatible. While at it, a common anode RGB led was added for debugging.
 
-Because the whole board runs at 3.3V, there was a need to have a development board running at the same voltage or use some sort of voltage translator interface based, for example, on the BSS138 Mosfet. To make it simple, a 5V 16MHz Arduino Pro Micro clone was fitted with a 3.3V regulator instead of the original 5V. This of course would mean that the oscillator would also have to be replaced. However, even though it's in fact overclocked and out of spec, the board seemed to be happy to run at 3.3V 16MHz. Further testing is needed to make sure it does actually run properly. This approach if obviously not recommended.
+Because the whole board runs at 3.3V, there was a need to have a development board running at the same voltage or use some sort of voltage translator interface based, for example, on the BSS138 Mosfet. To make it simple, a 5V 16MHz Arduino Pro Micro clone was fitted with a 3.3V regulator instead of the original 5V. This of course would mean that the oscillator would also have to be replaced. However, even though it's in fact overclocked and out of spec, the board seemed to be happy to run at 3.3V 16MHz. Further testing is needed to make sure it does actually run properly. This approach is obviously not recommended.
 
 <figure>
   {{ test_jig | markdownify | remove: "<p>" | remove: "</p>" }}
@@ -122,7 +122,7 @@ Because the whole board runs at 3.3V, there was a need to have a development boa
 
 Example [sketches]({{ site.github_code }}/tree/master/sketches/) from libraries available online were uploaded to the development board to test the individual components. At first glance, all of them passed.
 
-Below are a couple of shots from the I2C communication with the AS5048B sensor. A *START* condition can be seen in the beginning as well as a possible crosstalk artifact in the SCL line. The I2C protocol should be rugged enough to handle it thought. This artifact's origin might come from the fact that SDA and SCL run in parallel right next to each other. If later on it ends up being a problem then the spacing between them in the FPC flat cable should be increased by, for example, placing the GND line between them.
+Below are a couple of shots from the I2C communication with the AS5048B sensor. A *START* condition can be seen in the beginning as well as a possible crosstalk artifact in the SCL line. The I2C protocol should be rugged enough to handle it though. This artifact's origin might come from the fact that SDA and SCL run in parallel right next to each other. If later on it ends up being a problem then the spacing between them in the FPC flat cable should be increased by, for example, placing the GND line between them.
 
 {% include gallery id="gallery3" class="full" caption="I2C communication with AS5048B sensor. Channel 1 is <span style=\"color: Gold\">SDA</span> and Channel 2 is <span style=\"color: DodgerBlue\">SCL</span>" %}
 
@@ -130,7 +130,7 @@ The video below shows the [AS5048B]({{ site.github_code }}/tree/master/sketches/
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Awj-ps5e77U" frameborder="0" allowfullscreen></iframe><br>
 
-The second video shows the servos attitude by sending the accelerometer and gyro data returned from the [MPU-6050]({{ site.github_code }}/tree/master/sketches/MPU6050_DMP6_PLANE/) to a processing sketch.
+The second video shows the servo attitude by sending the accelerometer and gyro data returned from the [MPU-6050]({{ site.github_code }}/tree/master/sketches/MPU6050_DMP6_PLANE/) to a processing sketch.
 
  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/QTiknWq8EFs" frameborder="0" allowfullscreen></iframe><br>
 
