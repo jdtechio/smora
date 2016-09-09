@@ -7008,17 +7008,16 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <part name="SUPPLY6" library="SparkFun-Aesthetics" deviceset="5V" device=""/>
 <part name="GND5" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="Q2" library="transistor-fet" deviceset="SI2333DS" device="" value="SI2369DS-T1-GE3"/>
-<part name="SUPPLY7" library="SparkFun-Aesthetics" deviceset="5V" device=""/>
 <part name="R1" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="GND1" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="C3" library="rcl" deviceset="C-EU" device="C0402K" value="100n"/>
 <part name="GND7" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="SUPPLY8" library="SparkFun-Aesthetics" deviceset="5V" device=""/>
+<part name="GND8" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
-<text x="43.18" y="63.5" size="1.778" layer="97">Compare signal for microcontroller board</text>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="38.1" y="15.24" rot="MR180"/>
@@ -7039,12 +7038,12 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <instance part="SUPPLY6" gate="G$1" x="48.26" y="27.94"/>
 <instance part="GND5" gate="1" x="43.18" y="-5.08"/>
 <instance part="Q2" gate="G$1" x="5.08" y="53.34" rot="R90"/>
-<instance part="SUPPLY7" gate="G$1" x="7.62" y="40.64" rot="R180"/>
 <instance part="R1" gate="G$1" x="-2.54" y="45.72" rot="R90"/>
 <instance part="GND1" gate="1" x="-2.54" y="38.1"/>
 <instance part="C3" gate="G$1" x="15.24" y="48.26"/>
 <instance part="GND7" gate="1" x="63.5" y="38.1"/>
 <instance part="SUPPLY8" gate="G$1" x="63.5" y="55.88"/>
+<instance part="GND8" gate="1" x="7.62" y="38.1"/>
 </instances>
 <busses>
 </busses>
@@ -7160,6 +7159,11 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <pinref part="C2" gate="G$1" pin="2"/>
 <wire x1="63.5" y1="43.18" x2="63.5" y2="40.64" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="Q2" gate="G$1" pin="G"/>
+<pinref part="GND8" gate="1" pin="GND"/>
+<wire x1="7.62" y1="40.64" x2="7.62" y2="48.26" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="5V" class="0">
 <segment>
@@ -7173,11 +7177,6 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <wire x1="48.26" y1="12.7" x2="48.26" y2="27.94" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="4"/>
 <wire x1="40.64" y1="12.7" x2="48.26" y2="12.7" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<wire x1="7.62" y1="40.64" x2="7.62" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="Q2" gate="G$1" pin="G"/>
-<pinref part="SUPPLY7" gate="G$1" pin="5V"/>
 </segment>
 <segment>
 <pinref part="C2" gate="G$1" pin="1"/>
